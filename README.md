@@ -15,11 +15,11 @@ In this same screen I create a key pair to be able to connect trough SSH using P
 ## Setup
 Once the instance was up and running I setup PuTTY to target the instance public dns by adding at the beginning `ubuntu@` then dns name.
 
-![Putty Setup](putty-setup.png)
+![Putty Setup](images/putty-setup.png)
 
 Once this was setup I added my SSH key into the SSH tab and I was in my EC2 instance.
 
-![Putty Console](ec2-console.png)
+![Putty Console](images/ec2-console.png)
 
 ### Setup the REST API using Express
 Once I was inside my EC2 instance I setup the server to run the API following these steps:
@@ -41,7 +41,6 @@ nvm install --lts
 4. Setup the project by creating a folder
 ```bash
 mkdir rest-api && cd rest-api
-
 ```
 
 5. Initialized the project using node
@@ -58,28 +57,28 @@ npm install express
 [index.js](index.js)
 
 8. Transfer the file to the server using WinSCP
-![Win Scp page](win-scp.png)
+![Win Scp page](images/win-scp.png)
 
 9. Run the API
 ```bash
 node index.js
 ```
-![PuTTY Showing node Running](api-running.png)
+![PuTTY Showing node Running](images/api-running.png)
 
 With this, the API was up and running inside the EC2 server and it exposed two endpoints
 `/hello` and `/status` on the port 3000.
 
 But to be able to access the port 3000 you'll need to allow it inside your EC2 instance dashboard under security.
-![AWS Screen](aws-port3000.png)
+![AWS Screen](images/aws-port3000.png)
 
 ## API Response
 With the API now running in the EC2 instance and the port available I then was able to hit the endpoint to get a response by using the public ipv4 address of my instance and specifiying the port 3000.
 
 ### Response to /hello
-![Response of /hello endpoint](hello-endpoint.png)
+![Response of /hello endpoint](images/hello-endpoint.png)
 
 ### Response to /status
-![Response of /status endpoint](status-endpoint.png)
+![Response of /status endpoint](images/status-endpoint.png)
 
 # REST API in AWS Lambda
 Now for creating a REST API using Lambda you'll need to create a function, for this you'll need to go into the Lambda section in your AWS dashboard and click `creat function`
@@ -114,5 +113,5 @@ Now we need a way to access the lambda, to achieve this we can create an API Gat
 
 ## Calling the Lambda through the API
 Now with the Lambda and API setup we are able to hit our lambda using the API URL and the endpoint we created like this:
-![Postman calling API](postman-call.png)
+![Postman calling API](images/postman-call.png)
 And we get the response ''Hello from AWS Lambda!'
